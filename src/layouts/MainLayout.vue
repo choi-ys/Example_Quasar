@@ -84,7 +84,7 @@ const linksData = [
     title: 'Quasar Guide',
     caption: 'forum.quasar.dev',
     icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    link: 'https://quasar.dev/start/pick-quasar-flavour'
   },
   {
     title: 'Quasar Icon',
