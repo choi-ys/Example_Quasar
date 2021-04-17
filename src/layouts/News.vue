@@ -13,17 +13,15 @@
             >
             <template v-slot:body-cell-title="props">
               <q-td :props="props">
-                <div>
-                  <div class="text-subtitle1">
-                    <a :href="props.row.url" target="_blank">{{ props.value }}</a></div>
+                <div class="text-subtitle1">
+                  <a :href="props.row.url" target="_blank">{{ props.value }}</a>
                 </div>
               </q-td>
             </template>
             <template v-slot:body-cell-domain="props">
               <q-td :props="props">
                 <div>
-                  <div>
-                    <a href="https://www.naver.com" target="_blank">{{ props.value }}</a></div>
+                  <a :href="`https://${props.row.domain}`" target="_blank">{{ props.value }}</a>
                 </div>
               </q-td>
             </template>
@@ -36,8 +34,8 @@
             </template>
             <template v-slot:body-cell-time-ago="props">
               <q-td :props="props">
-                <div>
-                  <p class="time-ago">{{ props.value }}</p>
+                <div class="time-ago">
+                  {{ props.value }}
                 </div>
               </q-td>
             </template>
@@ -61,7 +59,6 @@ export default {
         sortBy: 'desc',
         descending: false,
         rowsPerPage: 15
-        // rowsNumber: xx if getting data from a server
       },
       columns: [
         {
@@ -112,11 +109,6 @@ export default {
   created() {
     this.$store.dispatch('FETCH_NEWS')
   },
-  methods:{
-    rowClick(evt, row, index){
-      window.open(this.newsInfo[index].url)
-    }
-  }
 }
 </script>
 
