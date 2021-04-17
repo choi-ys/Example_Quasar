@@ -1,12 +1,20 @@
 <template>
   <div>
-    <h1>ask View</h1>
-    <div v-for="ask in askInfo">{{ ask.title }}</div>
+    <tool-bar></tool-bar>
+    <section>
+      <h1>ask View</h1>
+    </section>
+    <section>
+      <div v-for="ask in askInfo">{{ ask.title }}</div>
+    </section>
   </div>
 </template>
 
 <script>
+import ToolBar from "components/ToolBar";
+
 export default {
+  components: {ToolBar},
   computed: {
     /**
      * Computed 시점에 store의 state에 저장된 API 응답 data 접근
