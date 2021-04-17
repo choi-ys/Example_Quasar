@@ -1,36 +1,29 @@
 <template>
   <div>
     <h1>ask View</h1>
-    <div v-for="ask in aksList">{{ ask.title }}</div>
+    <div v-for="ask in askInfo">{{ ask.title }}</div>
   </div>
 </template>
 
 <script>
-import {fetchAsksList} from '../api/index.js'
-
 export default {
-  name: "Ask",
-  data(){
-    return{
-      aksList: [],
+  computed: {
+    /**
+     * Computed 시점에 store의 state에 저장된 API 응답 data 접근
+     * @returns {[]}
+     */
+    askInfo(){
+      return this.$store.state.askList;
     }
   },
   created() {
     /**
-     * javascript의 Arrow Fucntion을 이용하여
-     * axios의 this가 아닌 vue component의 매개변수에 접근
-     * 문법 : () => {}
+     * store에서 제공하는 dispatch를 이용하여 actions 계층에 적용된 API 통신 모듈 호출
      */
-    fetchAsksList()
-      .then((response) => {
-        this.aksList = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    this.$store.dispatch('FETCH_ASK');
+    console.log(this.$route);
   }
-}
-</script>
+}</script>
 
 <style scoped>
 
