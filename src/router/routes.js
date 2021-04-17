@@ -8,8 +8,16 @@ const routes = [
     ]
   },
   {
-    path: '/Ask',
+    path: '/news',
+    component: () => import('layouts/News')
+  },
+  {
+    path: '/ask',
     component: () => import('layouts/Ask.vue')
+  },
+  {
+    path: '/jobs',
+    component: () => import('layouts/Jobs')
   },
 
   // Always leave this as last one,
