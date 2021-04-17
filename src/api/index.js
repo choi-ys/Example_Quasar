@@ -5,15 +5,24 @@ import axios from "axios"; // package.json의 dependencies에 추가된 의존�
  * @type {{baseUrl: string}}
  */
 const config = {
-  baseUrl : 'https://api.hnpwa.com/v0/'
+  baseUrl : 'https://api.hnpwa.com/v0/',
+  suffix: '/1.json'
 };
 
 /**
  * API 통신 모듈 정의
  * @returns {Promise<AxiosResponse<any>>}
  */
+function fetchNewsList() {
+  return axios.get(`${config.baseUrl}news${config.suffix}`)
+}
+
 function fetchAsksList() {
-  return axios.get(`${config.baseUrl}ask/1.json`); // ES6의 Template String을 이용한 자바스크립트 변수와 문자열 연결 : `${변수}문자열`
+  return axios.get(`${config.baseUrl}ask${config.suffix}`); // ES6의 Template String을 이용한 자바스크립트 변수와 문자열 연결 : `${변수}문자열`
+}
+
+function fetchJobsList() {
+  return axios.get(`${config.baseUrl}news${config.suffix}`)
 }
 
 /**
@@ -23,5 +32,7 @@ function fetchAsksList() {
  * API 통신 모듈 반출
  */
 export{
-  fetchAsksList
+  fetchAsksList,
+  fetchJobsList,
+  fetchNewsList,
 }
