@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { fetchAsksList } from '../api/index.js'
+import { fetchAsksList, fetchJobsList, fetchNewsList } from '../api/index.js'
 
 // import example from './module-example'
 
@@ -22,12 +22,23 @@ export default function (/* { ssrContext } */) {
      *  - actions를 이용해 호출된 API의 응답값이 mutations을 통해 satate에 저장
      */
     state:{
-      askList: []
+      newsList: [],
+      askList: [],
+      jobsList: [],
     },
     /**
      * axios를 이용해 정의된 API 통신 모듈 호출 부
      */
     actions:{
+      FETCH_NEWS(context){
+        fetchNewsList()
+          .then((response =>{
+            context.commit('SET_NEWS',response.data)
+          }))
+          .catch((error =>{
+            console.log(error);
+          }))
+      },
       FETCH_ASK(context){
         /**
          * javascript의 Arrow Fucntion을 이용하여
@@ -45,14 +56,29 @@ export default function (/* { ssrContext } */) {
           .catch((error =>{
             console.log(error);
           }))
+      },
+      FETCH_JOBS(context){
+        fetchJobsList()
+          .then((response =>{
+            context.commit('SET_JOB', response.data)
+          }))
+          .catch((error =>{
+            console.log(error);
+          }))
       }
     },
     /**
      * actions 계층의 API 응답 데이터를 state에 저장
      */
     mutations:{
+      SET_NEWS(state, data){
+        state.newsList = data;
+      },
       SET_ASK(state, data){
         state.askList = data;
+      },
+      SET_JOB(state, data){
+        state.jobsList = data;
       }
     },
     modules: {

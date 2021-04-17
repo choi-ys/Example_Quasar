@@ -2,7 +2,7 @@
   <div>
     <tool-bar></tool-bar>
     <section>
-      <h1>ask View</h1>
+      <h2>ask View</h2>
     </section>
     <section>
       <div v-for="ask in askInfo">{{ ask.title }}</div>

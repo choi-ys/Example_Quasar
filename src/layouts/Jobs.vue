@@ -2,10 +2,10 @@
   <div>
     <tool-bar></tool-bar>
     <section>
-      <h1>jobs view</h1>
+      <h2>jobs view</h2>
     </section>
     <section>
-      body
+      <div v-for="jobs in jobsInfo">{{ jobs.title }}</div>
     </section>
   </div>
 </template>
@@ -14,7 +14,15 @@
 import ToolBar from "components/ToolBar";
 export default {
   name: "Jobs",
-  components: {ToolBar}
+  components: {ToolBar},
+  computed:{
+    jobsInfo(){
+      return this.$store.state.jobsList
+    }
+  },
+  created() {
+    this.$store.dispatch('FETCH_JOBS')
+  }
 }
 </script>
 
