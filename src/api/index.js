@@ -5,8 +5,8 @@ import axios from "axios"; // package.json의 dependencies에 추가된 의존�
  * @type {{baseUrl: string}}
  */
 const config = {
-  baseUrl : 'https://api.hnpwa.com/v0/',
-  suffix: '/1.json'
+  suffix: '.json',
+  baseUrl : 'https://api.hnpwa.com/v0/'
 };
 
 /**
@@ -14,15 +14,19 @@ const config = {
  * @returns {Promise<AxiosResponse<any>>}
  */
 function fetchNewsList() {
-  return axios.get(`${config.baseUrl}news${config.suffix}`)
+  return axios.get(`${config.baseUrl}news/1${config.suffix}`)
 }
 
 function fetchAsksList() {
-  return axios.get(`${config.baseUrl}ask${config.suffix}`); // ES6의 Template String을 이용한 자바스크립트 변수와 문자열 연결 : `${변수}문자열`
+  return axios.get(`${config.baseUrl}ask/1${config.suffix}`); // ES6의 Template String을 이용한 자바스크립트 변수와 문자열 연결 : `${변수}문자열`
 }
 
 function fetchJobsList() {
-  return axios.get(`${config.baseUrl}news${config.suffix}`)
+  return axios.get(`${config.baseUrl}jobs/1${config.suffix}`)
+}
+
+function fetchAskItem(itemId) {
+  return axios.get(`${config.baseUrl}item/${itemId}${config.suffix}`)
 }
 
 /**
@@ -35,4 +39,5 @@ export{
   fetchAsksList,
   fetchJobsList,
   fetchNewsList,
+  fetchAskItem,
 }
