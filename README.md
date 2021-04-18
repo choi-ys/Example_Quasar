@@ -28,9 +28,8 @@ firebase deploy
 ```
 
 ### Quasar Example Project sample production with firebase
-```
-https://example-quasar-a26bd.web.app/
-```
+see with sample production [QuasarExample](https://example-quasar-a26bd.web.app/)
+
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
