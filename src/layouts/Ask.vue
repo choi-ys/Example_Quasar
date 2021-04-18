@@ -114,7 +114,6 @@ export default {
      * store에서 제공하는 dispatch를 이용하여 actions 계층에 적용된 API 통신 모듈 호출
      */
     this.$store.dispatch('FETCH_ASK');
-    console.log(this.$route);
   }
 }</script>
 
