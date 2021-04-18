@@ -1,7 +1,8 @@
 <template>
   <div class="q-pa-md">
     <q-toolbar class="bg-primary text-white rounded-borders">
-      <q-btn flat label="Homepage" />
+      <q-btn flat label="home" to="/">
+      </q-btn>
       <q-space />
 
       <q-tabs shrink>
