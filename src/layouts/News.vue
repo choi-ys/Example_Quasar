@@ -49,11 +49,13 @@
 
 <script>
 import ToolBar from "components/ToolBar";
+import { fetchNewsList } from "../api/index"
 
 export default {
   name: "News",
   data() {
     return {
+      newsInfo:[],
       filter: '',
       initialPagination: {
         sortBy: 'desc',
@@ -101,13 +103,14 @@ export default {
     }
   },
   components: {ToolBar},
-  computed: {
-    newsInfo(){
-      return this.$store.state.newsList
-    }
-  },
   created() {
-    this.$store.dispatch('FETCH_NEWS')
+    fetchNewsList()
+      .then((response=>{
+        this.newsInfo = response.data
+      }))
+      .catch((error=>{
+        console.log(error);
+      }))
   },
 }
 </script>

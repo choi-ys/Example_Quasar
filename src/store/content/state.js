@@ -1,6 +1,6 @@
 export default {
-  newsList: [],
-  askList: [],
-  jobsList: [],
-  itemInfo: {},
+  // newsList: [],
+  // askList: [],
+  // jobsList: [],
+  // itemInfo: {},
 }

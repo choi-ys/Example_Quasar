@@ -56,17 +56,25 @@
 
 <script>
 import ToolBar from "components/ToolBar";
+import { fetchAskItem } from "../api/index"
+
 export default {
   name: "Item",
   components: {ToolBar},
-  computed:{
-    itemInfo(){
-      return this.$store.state.itemInfo
+  data(){
+    return{
+      itemInfo: {},
     }
   },
   created() {
-    var itemId = this.$route.params.id;
-    this.$store.dispatch('FETCH_ITEMS', itemId)
+    const itemNo = this.$route.params.id;
+    fetchAskItem(itemNo)
+      .then((response=>{
+        this.itemInfo = response.data
+      }))
+      .then((error=>{
+        console.log(error);
+      }))
   }
 }
 </script>

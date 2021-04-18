@@ -48,11 +48,13 @@
 
 <script>
 import ToolBar from "components/ToolBar";
+import { fetchAsksList } from '../api/index';
 
 export default {
   name: "Ask",
   data() {
     return {
+      askInfo: [],
       filter: '',
       initialPagination: {
         sortBy: 'desc',
@@ -100,20 +102,14 @@ export default {
     }
   },
   components: {ToolBar},
-  computed: {
-    /**
-     * Computed 시점에 store의 state에 저장된 API 응답 data 접근
-     * @returns {[]}
-     */
-    askInfo(){
-      return this.$store.state.askList;
-    }
-  },
   created() {
-    /**
-     * store에서 제공하는 dispatch를 이용하여 actions 계층에 적용된 API 통신 모듈 호출
-     */
-    this.$store.dispatch('FETCH_ASK');
+    fetchAsksList()
+      .then((response =>{
+        this.askInfo = response.data
+      }))
+      .catch((error =>{
+        console.log(error);
+      }))
   }
 }</script>
 
