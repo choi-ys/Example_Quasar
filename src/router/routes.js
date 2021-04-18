@@ -19,6 +19,10 @@ const routes = [
     path: '/jobs',
     component: () => import('layouts/Jobs')
   },
+  {
+    path: '/item/:id',
+    component: () => import('layouts/Item')
+  },
 
   // Always leave this as last one,
   // but you can also remove it

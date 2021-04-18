@@ -14,7 +14,7 @@
             <template v-slot:body-cell-title="props">
               <q-td :props="props">
                 <div class="text-subtitle1">
-                  {{ props.value }}
+                  <a :href="`item/${props.row.id}`">{{ props.value }}</a>
                 </div>
               </q-td>
             </template>

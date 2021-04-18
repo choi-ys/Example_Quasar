@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { fetchAsksList, fetchJobsList, fetchNewsList } from '../api/index.js'
+import { fetchAsksList, fetchJobsList, fetchNewsList, fetchAskItem } from '../api/index.js'
 
 // import example from './module-example'
 
@@ -25,6 +25,7 @@ export default function (/* { ssrContext } */) {
       newsList: [],
       askList: [],
       jobsList: [],
+      itemInfo: {}
     },
     /**
      * axios를 이용해 정의된 API 통신 모듈 호출 부
@@ -65,6 +66,13 @@ export default function (/* { ssrContext } */) {
           .catch((error =>{
             console.log(error);
           }))
+      },
+      FETCH_ITEMS(context, itemId){
+        fetchAskItem(itemId)
+          .then((response =>{
+            context.commit('SET_ITEM' ,response.data)
+          }))
+          .catch()
       }
     },
     /**
@@ -79,6 +87,9 @@ export default function (/* { ssrContext } */) {
       },
       SET_JOB(state, data){
         state.jobsList = data;
+      },
+      SET_ITEM(state, data){
+        state.itemInfo= data;
       }
     },
     modules: {
