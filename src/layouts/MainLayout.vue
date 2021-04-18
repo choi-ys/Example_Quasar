@@ -78,7 +78,7 @@ const linksData = [
     title: 'Github',
     caption: 'github.com/choi-ys',
     icon: 'code',
-    link: 'https://github.com/choi-ys'
+    link: 'https://github.com/choi-ys/Example_Quasar'
   },
   {
     title: 'Quasar Guide',
