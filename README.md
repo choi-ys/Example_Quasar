@@ -22,7 +22,7 @@ quasar build
 ```bash
 firebase login
 firebase init -> public path : dist/spa
-npm clean
+npm clean -> quasar clean
 npm run build -> quasar build
 firebase deploy
 ```
