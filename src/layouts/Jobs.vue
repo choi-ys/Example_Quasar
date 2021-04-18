@@ -25,13 +25,6 @@
                 </div>
               </q-td>
             </template>
-            <template v-slot:body-cell-user="props">
-              <q-td :props="props">
-                <div>
-                  <router-link :to="`/user/${props.row.user}`">{{ props.value }}</router-link>
-                </div>
-              </q-td>
-            </template>
             <template v-slot:body-cell-time-ago="props">
               <q-td :props="props">
                 <div class="time-ago">
@@ -74,15 +67,6 @@ export default {
           label: 'source to',
           align: 'left',
           field: row => row.domain,
-          format: val => `${val}`,
-          sortable: true
-        },
-        {
-          name: 'user',
-          required: true,
-          label: 'author',
-          align: 'left',
-          field: row => row.user,
           format: val => `${val}`,
           sortable: true
         },
