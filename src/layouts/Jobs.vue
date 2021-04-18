@@ -48,10 +48,12 @@
 
 <script>
 import ToolBar from "components/ToolBar";
+import { fetchJobsList } from "../api/index"
 export default {
   name: "Jobs",
   data() {
     return {
+      jobsInfo:[],
       filter: '',
       initialPagination: {
         sortBy: 'desc',
@@ -99,13 +101,14 @@ export default {
     }
   },
   components: {ToolBar},
-  computed:{
-    jobsInfo(){
-      return this.$store.state.jobsList
-    }
-  },
   created() {
-    this.$store.dispatch('FETCH_JOBS')
+    fetchJobsList()
+      .then((response=>{
+        this.jobsInfo = response.data
+      }))
+      .catch((error=>{
+        console.log(error);
+      }))
   }
 }
 </script>
