@@ -18,5 +18,14 @@ quasar dev
 quasar build
 ```
 
+### deploy to firebase
+```bash
+firebase login
+firebase init -> public path : dist/spa
+npm clean
+npm run build -> quasar build
+firebase deploy
+```
+
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
